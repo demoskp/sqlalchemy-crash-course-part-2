@@ -1,9 +1,21 @@
+from random import randint
+
 from main import session
+from models.drive import Unit, Drive, Distance, Duration, Economy
 from models.user import User, Address, Preference, Role
 
 role_data = [
     {"name": "Administrator", "slug": "admin"},
     {"name": "Super Administrator", "slug": "super-admin"},
+]
+
+unit_data = [
+    {"name": "Miles", "slug": "miles"},
+    {"name": "Kilometers", "slug": "kilometers"},
+    {"name": "Miles Per Gallon", "slug": "miles-per-gallon"},
+    {"name": "Liters Per 100KM", "slug": "liters-per-100km"},
+    {"name": "Seconds", "slug": "seconds"},
+    {"name": "Minutes", "slug": "minutes"},
 ]
 
 user_data = [
@@ -163,9 +175,19 @@ session.commit()
 
 roles = Role.query.all()
 
+for unit in unit_data:
+    session.add(Unit(**unit))
+
+session.commit()
+
+units = Unit.query.all()
+miles_unit = next(filter(lambda un: un.slug == "miles", units), None)
+mpg_unit = next(filter(lambda un: un.slug == "miles-per-gallon", units), None)
+minutes_unit = next(filter(lambda un: un.slug == "minutes", units), None)
+
 users = []
 
-for u in user_data:
+for i, u in enumerate(user_data):
     user = User()
     user.first_name = u.get("first_name")
     user.last_name = u.get("last_name")
@@ -178,6 +200,17 @@ for u in user_data:
     user.addresses.extend(addresses)
     user.preference = Preference(**u.get("preference"))
     user.roles = roles
+    drives = []
+
+    if i % 2 == 0:
+        for _ in range(randint(2, 10)):
+            distance = Distance(value=randint(30, 300), unit=miles_unit)
+            duration = Duration(value=randint(30, 90), unit=minutes_unit)
+            economy = Economy(value=randint(30, 90), unit=mpg_unit)
+            drive = Drive(distance=distance, economy=economy, duration=duration)
+            drives.append(drive)
+
+    user.drives = drives
 
     users.append(user)
 

@@ -15,6 +15,7 @@ class User(TimeStampedModel):
     preference = Relationship("Preference", back_populates="user", uselist=False, passive_deletes=True)
     addresses = Relationship("Address", back_populates="user", passive_deletes=True)
     roles = Relationship("Role", secondary="user_roles", back_populates="users", passive_deletes=True)
+    drives = Relationship("Drive", back_populates="user", passive_deletes=True)
 
     def __repr__(self):
         return f"{self.__class__.__name__}, name: {self.first_name} {self.last_name}"
