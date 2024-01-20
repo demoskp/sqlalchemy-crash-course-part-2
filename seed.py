@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 
 from main import session
 from models.drive import Unit, Drive, Distance, Duration, Economy
@@ -204,8 +204,8 @@ for i, u in enumerate(user_data):
 
     if i % 2 == 0:
         for _ in range(randint(2, 10)):
-            distance = Distance(value=randint(30, 300), unit=miles_unit)
-            duration = Duration(value=randint(30, 90), unit=minutes_unit)
+            distance = Distance(value=choice([randint(30, 300), None]), unit=miles_unit)
+            duration = Duration(value=choice([randint(30, 90), None]), unit=minutes_unit)
             economy = Economy(value=randint(30, 90), unit=mpg_unit)
             drive = Drive(distance=distance, economy=economy, duration=duration)
             drives.append(drive)
