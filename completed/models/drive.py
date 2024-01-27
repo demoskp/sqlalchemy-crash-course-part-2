@@ -1,27 +1,7 @@
-from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import Relationship
 
-from completed.models.base import TimeStampedModel, MetricsModel
-
-
-class Unit(TimeStampedModel):
-    __tablename__ = "units"
-
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(40), nullable=False)
-    slug = Column(String(40), nullable=False, unique=True)
-
-
-class Distance(MetricsModel):
-    __tablename__ = "distances"
-
-
-class Economy(MetricsModel):
-    __tablename__ = "economies"
-
-
-class Duration(MetricsModel):
-    __tablename__ = "durations"
+from completed.models.base import TimeStampedModel
 
 
 class Drive(TimeStampedModel):
