@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import Relationship
 
-from models.base import TimeStampedModel, Model
+from completed.models.base import TimeStampedModel, Model
 
 
 class User(TimeStampedModel):

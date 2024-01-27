@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, DateTime, Integer, Float, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship, declared_attr
 
-from main import session
+from completed.main import session
 
 Model = declarative_base()
 Model.query = session.query_property()

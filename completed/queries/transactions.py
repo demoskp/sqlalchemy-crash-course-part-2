@@ -1,5 +1,5 @@
-from main import session
-from models.user import User, Preference
+from completed.main import session
+from completed.models.user import User
 
 user = User(
     first_name="John",

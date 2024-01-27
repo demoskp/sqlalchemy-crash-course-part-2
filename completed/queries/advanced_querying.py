@@ -1,10 +1,10 @@
 from operator import and_
 
-from sqlalchemy import column, case
+from sqlalchemy import case
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
-from models import User, Drive, Distance, Economy, Role, Duration, Unit
+from completed.models import User, Drive, Distance, Duration, Unit
 
 # users_with_new_column = (
 #     User

@@ -1,6 +1,6 @@
 from sqlalchemy import desc
 
-from models.user import User, Role
+from completed.models.user import User, Role
 
 all_users = User.query.all()
 first_user = User.query.first()

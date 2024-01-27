@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, ForeignKey, String, Float
+from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import Relationship
 
-from models.base import TimeStampedModel, MetricsModel
+from completed.models.base import TimeStampedModel, MetricsModel
 
 
 class Unit(TimeStampedModel):

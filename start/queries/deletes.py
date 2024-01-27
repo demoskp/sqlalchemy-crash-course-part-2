@@ -1,5 +1,5 @@
-from main import session
-from models.user import User
+from start.main import session
+from start.models.user import User
 
 user = User.query.first()
 
