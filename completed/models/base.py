@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Integer, Float, ForeignKey
-from sqlalchemy.orm import declarative_base, relationship, declared_attr
+from sqlalchemy import Column, DateTime
+from sqlalchemy.orm import declarative_base
 
 from completed.main import session
 
